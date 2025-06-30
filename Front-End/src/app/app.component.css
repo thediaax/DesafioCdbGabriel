@@ -1,0 +1,98 @@
+/* Reset e box-sizing */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Garante que o body ocupe toda a altura da tela */
+}
+
+header {
+background-color:#003979;
+  border: 1px solid #2660f0;;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 32px; /* Remove o padding-top e padding-bottom e aplica um padding uniforme */
+}
+
+main {
+  flex: 1; /* Faz o main ocupar todo o espaço restante */
+  padding: 20px; /* Adiciona um padding ao main */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo */
+}
+
+form {
+  background: #003979;
+  color: white;
+  width: 100%; /* Faz o formulário ocupar toda a largura disponível */
+  max-width: 450px; /* Define uma largura máxima */
+  padding: 20px; /* Adiciona padding interno ao formulário */
+  border-radius: 8px; /* Cantos arredondados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+label {
+  margin-top: 10px; /* Espaçamento entre os labels */
+  display: block; /* Faz os labels ocuparem toda a largura */
+}
+
+input {
+  width: 100%; /* Faz os inputs ocuparem toda a largura do formulário */
+  padding: 10px; /* Adiciona padding interno aos inputs */
+  margin-top: 5px; /* Espaçamento acima dos inputs */
+  margin-bottom: 15px; /* Espaçamento abaixo dos inputs */
+  border: 1px solid #ccc; /* Borda leve */
+  border-radius: 4px; /* Cantos arredondados nos inputs */
+}
+
+button {
+  background: #003979;
+  color: white;
+  border: none; /* Remove a borda padrão */
+  padding: 10px 15px; /* Padding para o botão */
+  border-radius: 4px; /* Cantos arredondados */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  transition: background-color 0.3s; /* Transição suave para mudança de cor */
+}
+
+button:hover {
+  background-color: rgb(35, 71, 184); /* Cor ao passar o mouse */
+}
+
+.resultado {
+  margin-top: 20px; /* Espaçamento acima do resultado */
+  padding: 10px; /* Padding interno */
+  background-color: #003979;
+  border-radius: 8px; /* Cantos arredondados */
+  color: white;
+}
+
+footer {
+  background: #003979;
+  border: 1px solid #2660f0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  bottom: 0;
+}
+.adviser {
+  margin-top: 20px; /* Espaçamento acima do resultado */
+  padding: 10px; /* Padding interno */
+  background-color: rgba(73, 255, 32, 0.5); /* Fundo levemente colorido */
+  border-radius: 3px; /* Cantos arredondados */
+}

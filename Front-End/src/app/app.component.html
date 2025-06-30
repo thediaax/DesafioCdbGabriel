@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="app.component.css">
+
+<header class="top">
+  <img src="assets/logo-b3-header.png"/>
+  <h2>Simulador de renda - CDB</h2>
+</header>
+
+<main>
+  <form (ngSubmit)="enviarDados()">
+    <label for="valorInicial">Valor Inicial:</label><br>
+    <input type="number" [(ngModel)]="valorInicial" name="valorInicial" required min="1" /><br>
+
+    <label for="Meses">Meses:</label><br>
+    <input type="number" [(ngModel)]="meses" name="meses" placeholder="insira em meses a quantidade de tempo a simular"
+      required min="1" /><br>
+    <button type="submit" class="button">Enviar</button>
+  </form>
+
+  <div *ngIf="resultado" class="resultado">
+    <h2>Resultado</h2>
+    <p>
+      O valor {{ valorInicial }} irá retornar em {{ meses }} meses o valor de
+      R${{ resultado.performanceValue | number: '1.2-2' }} e foi descontado de imposto: R$ {{ resultado.taxesValue | number: '1.2-2' }} .
+    </p>
+  </div>
+
+  <div *ngIf="!resultado" class="adviser">
+    <p>Por favor, insira os dados e clique em "Enviar".</p>
+  </div>
+</main>
+
+<footer>
+  <h2>Footer</h2>
+</footer>
