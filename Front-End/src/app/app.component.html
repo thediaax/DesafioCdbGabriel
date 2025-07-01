@@ -16,13 +16,13 @@
     <button type="submit" class="button">Enviar</button>
   </form>
 
-  <div *ngIf="resultado" class="resultado">
-    <h2>Resultado</h2>
-    <p>
-      O valor {{ valorInicial }} irá retornar em {{ meses }} meses o valor de
-      R${{ resultado.performanceValue | number: '1.2-2' }} e foi descontado de imposto: R$ {{ resultado.taxesValue | number: '1.2-2' }} .
-    </p>
-  </div>
+<div *ngIf="resultado">
+    <h3>Resultado:</h3>
+    <p><strong>Investimento Inicial:</strong> {{ resultado.investimentoInicial | number:'1.2-2' }}</p>
+    <p><strong>Imposto:</strong> {{ resultado.imposto | number:'1.2-2' }}</p>
+    <p><strong>Investimento Bruto:</strong> {{ resultado.investimentoBruto | number:'1.2-2' }}</p>
+    <p><strong>Investimento Líquido:</strong> {{ resultado.investimentoLiquido | number:'1.2-2' }}</p>
+</div>
 
   <div *ngIf="!resultado" class="adviser">
     <p>Por favor, insira os dados e clique em "Enviar".</p>

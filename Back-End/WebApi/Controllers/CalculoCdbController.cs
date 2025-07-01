@@ -18,19 +18,9 @@ namespace WebApi.Controllers
         [HttpPost("cdb-investimento")]
         public ActionResult<CalculoResponse> CalcularInvestimento([FromBody] CalculoRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (request.InitialValue <= 0 || request.RescueTime < 1)
-            {
-                return BadRequest("Valores inválidos.");
-            }
-
             try
             {
-                var response = _calculoCdb.RetornodeSaldos(request);
+                var response = _calculoCdb.RetornodeSaldosCompleto(request);
                 return Ok(response);
             }
             catch (Exception ex)

@@ -4,33 +4,42 @@ namespace Services
 {
     public class CalculoCdb : ICalculoCdb
     {
+
+        const string erroValorInicial = "O valor precisa ser positivo.";
+        const string erroPrazo = "o prazo precisa ser superior a 1 mês";
         private decimal CalculaInvestimentoTotal(CalculoRequest req, CalculoResponse res)
         {
-            const decimal tb = 1.08m;
+            const decimal taxaBase = 1.08m;
             const decimal cdi = 0.009m;
             decimal rendimento = req.InitialValue;
 
             if (req.InitialValue <= 0)
             {
-                return 0;
+                throw new ArgumentException(erroValorInicial);
             }
-            if (req.RescueTime >= 1)
+
+            if (req.RescueTime < 1)
+            {
+                throw new ArgumentException(erroPrazo);
+            }
+
+            else
             {
                 for (int i = 0; i < req.RescueTime; i++)
                 {
-                    rendimento *= (1 + (cdi * tb));
+                    rendimento *= (1 + (cdi * taxaBase));
                 }
             }
             res.InvestimentoBruto = rendimento;
             return res.InvestimentoBruto;
         }
 
-        private decimal CalculoIR(CalculoResponse res, CalculoRequest req)
+        private decimal CalcularImposto(CalculoResponse res, CalculoRequest req)
         {
             res.InvestimentoInicial = req.InitialValue;
             decimal lucro = res.InvestimentoBruto - res.InvestimentoInicial;
             decimal porcentagem = PorcentagemIR(req.RescueTime);
-            res.Imposto = lucro * porcentagem; 
+            res.Imposto = lucro * porcentagem;
 
             return res.Imposto;
         }
@@ -59,11 +68,11 @@ namespace Services
             return res.InvestimentoLiquido;
         }
 
-        public CalculoResponse RetornodeSaldos(CalculoRequest req)
+        public CalculoResponse RetornodeSaldosCompleto(CalculoRequest req)
         {
             CalculoResponse res = new CalculoResponse();
             res.InvestimentoBruto = CalculaInvestimentoTotal(req, res);
-            CalculoIR(res, req);
+            CalcularImposto(res, req);
             CalculoValorLiquido(res);
             return res;
         }

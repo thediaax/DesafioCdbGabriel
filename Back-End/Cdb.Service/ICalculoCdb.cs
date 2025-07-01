@@ -9,6 +9,6 @@ namespace Services
 {
     public interface ICalculoCdb
     {
-        CalculoResponse RetornodeSaldos(CalculoRequest req);
+        CalculoResponse RetornodeSaldosCompleto(CalculoRequest req);
     }
 }

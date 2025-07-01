@@ -1,4 +1,6 @@
 export interface ResultadoDto {
-    taxesValue: number
-    performanceValue: number
+    investimentoInicial: number
+    imposto: number
+    investimentoLiquido: number
+    investimentoBruto: number
 }
