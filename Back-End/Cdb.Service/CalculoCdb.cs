@@ -7,10 +7,11 @@ namespace Services
 
         const string erroValorInicial = "O valor precisa ser positivo.";
         const string erroPrazo = "o prazo precisa ser superior a 1 mês";
-        private decimal CalculaInvestimentoTotal(CalculoRequest req, CalculoResponse res)
+        const decimal taxaBase = 1.08m;
+        const decimal cdi = 0.009m;
+        private static decimal CalculaInvestimentoTotal(CalculoRequest req, CalculoResponse res)
         {
-            const decimal taxaBase = 1.08m;
-            const decimal cdi = 0.009m;
+            res.InvestimentoInicial = req.InitialValue;
             decimal rendimento = req.InitialValue;
 
             if (req.InitialValue <= 0)
@@ -34,14 +35,11 @@ namespace Services
             return res.InvestimentoBruto;
         }
 
-        private decimal CalcularImposto(CalculoResponse res, CalculoRequest req)
+        private static void CalcularImposto(CalculoResponse res, CalculoRequest req)
         {
-            res.InvestimentoInicial = req.InitialValue;
             decimal lucro = res.InvestimentoBruto - res.InvestimentoInicial;
             decimal porcentagem = PorcentagemIR(req.RescueTime);
             res.Imposto = lucro * porcentagem;
-
-            return res.Imposto;
         }
 
         public static decimal PorcentagemIR(int prazoResgate)
@@ -62,10 +60,9 @@ namespace Services
             }
         }
 
-        private decimal CalculoValorLiquido(CalculoResponse res)
+        private static void CalculoValorLiquido(CalculoResponse res)
         {
             res.InvestimentoLiquido = res.InvestimentoBruto - res.Imposto;
-            return res.InvestimentoLiquido;
         }
 
         public CalculoResponse RetornodeSaldosCompleto(CalculoRequest req)
