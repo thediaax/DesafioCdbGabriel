@@ -44,20 +44,13 @@ namespace Services
 
         public static decimal PorcentagemIR(int prazoResgate)
         {
-            switch (prazoResgate)
+            return prazoResgate switch
             {
-                case int n when n < 7:
-                    return 0.225m;
-
-                case int n when n < 13:
-                    return 0.2m;
-
-                case int n when n < 25:
-                    return 0.175m;
-
-                default:
-                    return 0.15m;
-            }
+                int n when n < 7 => 0.225m,
+                int n when n < 13 => 0.2m,
+                int n when n < 25 => 0.175m,
+                _ => 0.15m,
+            };
         }
 
         private static void CalculoValorLiquido(CalculoResponse res)
@@ -67,7 +60,7 @@ namespace Services
 
         public CalculoResponse RetornodeSaldosCompleto(CalculoRequest req)
         {
-            CalculoResponse res = new CalculoResponse();
+            CalculoResponse res = new();
             res.InvestimentoBruto = CalculaInvestimentoTotal(req, res);
             CalcularImposto(res, req);
             CalculoValorLiquido(res);
