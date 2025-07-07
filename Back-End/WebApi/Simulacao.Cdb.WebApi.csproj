@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cdb.Service\Services.csproj" />
+    <ProjectReference Include="..\Cdb.Service\Simulacao.Cdb.Calculo.Services.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace Domain
+﻿namespace Simulacao.Cdb.Calculo.Domain
 {
     public class CalculoRequest
     {

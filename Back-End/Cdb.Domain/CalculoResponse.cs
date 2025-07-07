@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Simulacao.Cdb.Calculo.Domain
 {
     public class CalculoResponse
     {
@@ -13,7 +13,7 @@ namespace Domain
         /// </summary>
         public decimal InvestimentoInicial { get; set; }
 
-        
+    
         /// <summary>
         /// taxa do imposto
         /// </summary>

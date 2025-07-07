@@ -1,14 +1,15 @@
-﻿using Domain;
+﻿using Simulacao.Cdb.Calculo.Domain;
+using Simulacao.Cdb.Calculo.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Services;
-using System;
 
-namespace Api.Tests
+namespace Simulacao.Cdb.Calculo.Test
 {
     [TestClass]
-    public class CalculoCdbTests(CalculoCdb calculoCdb)
+    public class CalculoCdbTests
     {
-        private CalculoCdb _calculoCdb = calculoCdb;
+        private CalculoCdb _calculoCdb;
+
+
 
         [TestInitialize]
         public void Setup()
@@ -51,18 +52,19 @@ namespace Api.Tests
             var request = new CalculoRequest
             {
                 InitialValue = 1000,
-                RescueTime = 12 // 1 ano
+                RescueTime = 12
             };
 
             // Act
-            var response = _calculoCdb.RetornodeSaldosCompleto(request);
+            
+            CalculoResponse response = _calculoCdb.RetornodeSaldosCompleto(request);
 
             // Assert
             decimal rendimentoEsperado = request.InitialValue *
                                           (decimal)Math.Pow((double)(1 + 0.009m * 1.08m), request.RescueTime);
 
-            Assert.AreEqual(Math.Round(rendimentoEsperado, 10), Math.Round(response.InvestimentoBruto, 10));
-            Assert.AreEqual(Math.Round(rendimentoEsperado - response.Imposto, 10), Math.Round(response.InvestimentoLiquido, 10));
+            Assert.AreEqual(Math.Round(rendimentoEsperado, 10), Math.Round(response?.InvestimentoBruto ?? 0, 10));
+            Assert.AreEqual(Math.Round(rendimentoEsperado - response?.Imposto ?? 0, 10), Math.Round(response?.InvestimentoLiquido ?? 0, 10));
         }
 
         [TestMethod]

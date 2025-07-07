@@ -6,10 +6,9 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-html,
-body {
+::ng-deep body {
   height: 100%; /* Garante que o body ocupe toda a altura da tela */
-  margin: 0; /* Remove a margem padrão do body */
+  margin: 0px!important;/* Remove a margem padrão do body */
   padding: 0; /* Remove o padding padrão do body */
 }
 
@@ -26,8 +25,9 @@ main {
   flex: 1; /* Faz o main ocupar todo o espaço restante */
   padding: 20px; /* Adiciona um padding ao main */
   display: flex;
-  flex-direction: column;
-  align-items: center; /* Centraliza o conteúdo */
+  flex-direction: row; /* Alinha os filhos em linha (lado a lado) */
+  justify-content: space-between; /* Distribui espaço entre os filhos */
+  align-items: flex-start; /* Alinha os filhos no início do contêiner */
   height: 100%;
 }
 
@@ -69,7 +69,7 @@ button:hover {
   background-color: rgb(35, 71, 184); /* Cor ao passar o mouse */
 }
 
-.resultado {
+ .resultado {
   margin-top: 20px; /* Espaçamento acima do resultado */
   padding: 10px; /* Padding interno */
   background-color: #003979;
@@ -79,7 +79,6 @@ button:hover {
 
 footer {
   background: #003979;
-  border: 1px solid #2660f0;
   color: white;
   display: flex;
   justify-content: center;
@@ -95,4 +94,13 @@ footer {
   padding: 10px; /* Padding interno */
   background-color: rgba(73, 255, 32, 0.5); /* Fundo levemente colorido */
   border-radius: 3px; /* Cantos arredondados */
+}
+
+.information {
+  background-color: #2660f0;
+  margin-right: 20px; /* Espaçamento à direita do bloco de informação */
+  width: 280px; /* Largura fixa ou ajustável conforme necessário */
+  padding: 15px; /* Padding interno */
+  border-radius: 8px; /* Cantos arredondados */
+  color: white; /* Cor do texto */
 }

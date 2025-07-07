@@ -1,8 +1,8 @@
-using Domain;
 using Microsoft.AspNetCore.Mvc;
-using Services;
+using Simulacao.Cdb.Calculo.Domain;
+using Simulacao.Cdb.Calculo.Services;
 
-namespace WebApi.Controllers
+namespace Simulacao.Cdb.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

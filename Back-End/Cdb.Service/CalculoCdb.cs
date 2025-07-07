@@ -1,6 +1,6 @@
-﻿using Domain;
+﻿using Simulacao.Cdb.Calculo.Domain;
 
-namespace Services
+namespace Simulacao.Cdb.Calculo.Services
 {
     public class CalculoCdb : ICalculoCdb
     {
@@ -28,7 +28,7 @@ namespace Services
             {
                 for (int i = 0; i < req.RescueTime; i++)
                 {
-                    rendimento *= (1 + (cdi * taxaBase));
+                    rendimento *= 1 + cdi * taxaBase;
                 }
             }
             res.InvestimentoBruto = rendimento;

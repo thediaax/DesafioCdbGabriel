@@ -2,10 +2,33 @@
 
 <header class="top">
   <img src="assets/logo-b3-header.png"/>
-  <h2>Simulador de renda - CDB</h2>
+  <h2>SIMULADOR DE RENDA - CDB</h2>
 </header>
 
 <main>
+  <aside class="information">
+    <h3>Como Funciona o Simulador de Renda CDB</h3>
+    <p>O simulador calcula o rendimento de um investimento em CDB com base em um valor inicial e um prazo em meses.</p>
+    
+    <h3>1. Entrada de Dados</h3>
+    <ul>
+        <li><strong>Valor Inicial:</strong> Montante a ser investido (deve ser positivo).</li>
+        <li><strong>Prazos em Meses:</strong> Período do investimento (mínimo de 1 mês).</li>
+    </ul>
+    
+    <h3>2. Resultados</h3>
+    <p>O simulador fornece:</p>
+    <ul>
+        <li><strong>Valor Inicial:</strong> O montante investido.</li>
+        <li><strong>Valor Bruto:</strong> Rendimento total antes do imposto.</li>
+        <li><strong>Impostos:</strong> Valor do imposto de renda sobre o lucro.</li>
+        <li><strong>Valor Líquido:</strong> Montante total após dedução do imposto.</li>
+    </ul>
+
+    <h3>Exemplo</h3>
+    <p>Se você investir R$ 1.000,00 por 12 meses, o simulador calcula os valores finais, incluindo impostos.</p>
+  </aside>
+
   <form (ngSubmit)="enviarDados()">
     <label for="valorInicial">Valor Inicial:</label><br>
     <input type="number" [(ngModel)]="valorInicial" name="valorInicial" required min="1" /><br>
@@ -16,13 +39,13 @@
     <button type="submit" class="button">Enviar</button>
   </form>
 
-<div *ngIf="resultado">
+  <div *ngIf="resultado" class="resultado">
     <h3>Resultado:</h3>
     <p><strong>Investimento Inicial:</strong> {{ resultado.investimentoInicial | number:'1.2-2' }}</p>
     <p><strong>Imposto:</strong> {{ resultado.imposto | number:'1.2-2' }}</p>
     <p><strong>Investimento Bruto:</strong> {{ resultado.investimentoBruto | number:'1.2-2' }}</p>
     <p><strong>Investimento Líquido:</strong> {{ resultado.investimentoLiquido | number:'1.2-2' }}</p>
-</div>
+  </div>
 
   <div *ngIf="!resultado" class="adviser">
     <p>Por favor, insira os dados e clique em "Enviar".</p>
@@ -30,5 +53,5 @@
 </main>
 
 <footer>
-  <h2>Footer</h2>
+  <h2>B3</h2>
 </footer>
