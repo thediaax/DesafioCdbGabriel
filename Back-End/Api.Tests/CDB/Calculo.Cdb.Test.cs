@@ -1,18 +1,19 @@
-﻿using Simulacao.Cdb.Calculo.Domain;
-using Simulacao.Cdb.Calculo.Services;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Simulacao.Investimento.Calculo.Domain.CBD;
+using Simulacao.Investimento.Calculo.Services.CBD;
+using System.Diagnostics.CodeAnalysis;
 
-namespace Simulacao.Cdb.Calculo.Test
+namespace Simulacao.Investimento.Calculo.Test.CDB
 {
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public class CalculoCdbTests
     {
-        private CalculoCdb _calculoCdb;
+        private readonly CalculoCdb _calculoCdb;
 
 
 
-        [TestInitialize]
-        public void Setup()
+
+        public CalculoCdbTests()
         {
             _calculoCdb = new CalculoCdb();
         }
@@ -21,43 +22,43 @@ namespace Simulacao.Cdb.Calculo.Test
         public void RetornodeSaldosCompleto_ValorInicialNegativo_LancaArgumentException()
         {
             // Arrange
-            var request = new CalculoRequest
+            var request = new CdbRequest
             {
                 InitialValue = -100,
                 RescueTime = 12
             };
 
             // Act & Assert
-            Assert.ThrowsException<ArgumentException>(() => _calculoCdb.RetornodeSaldosCompleto(request));
+            Assert.ThrowsException<ArgumentException>(() => _calculoCdb.RetornoSaldoCompleto(request));
         }
 
         [TestMethod]
         public void RetornodeSaldosCompleto_PrazoMenorQueUmMes_LancaArgumentException()
         {
             // Arrange
-            var request = new CalculoRequest
+            var request = new CdbRequest
             {
                 InitialValue = 1000,
                 RescueTime = 0
             };
 
             // Act & Assert
-            Assert.ThrowsException<ArgumentException>(() => _calculoCdb.RetornodeSaldosCompleto(request));
+            Assert.ThrowsException<ArgumentException>(() => _calculoCdb.RetornoSaldoCompleto(request));
         }
 
         [TestMethod]
         public void RetornodeSaldosCompleto_ValorValido_CalculaCorretamente()
         {
             // Arrange
-            var request = new CalculoRequest
+            var request = new CdbRequest
             {
                 InitialValue = 1000,
                 RescueTime = 12
             };
 
             // Act
-            
-            CalculoResponse response = _calculoCdb.RetornodeSaldosCompleto(request);
+
+            CdbResponse response = _calculoCdb.RetornoSaldoCompleto(request);
 
             // Assert
             decimal rendimentoEsperado = request.InitialValue *

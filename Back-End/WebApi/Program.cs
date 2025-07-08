@@ -1,4 +1,5 @@
-using Simulacao.Cdb.Calculo.Services;
+
+using Simulacao.Investimento.Calculo.Services.CBD;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,6 @@
-﻿namespace Simulacao.Cdb.Calculo.Domain
+﻿namespace Simulacao.Investimento.Calculo.Domain.CBD
 {
-    public class CalculoRequest
+    public class CdbRequest
     {
         /// <summary>
         /// valor inicial do investimento enviado pelo usuario

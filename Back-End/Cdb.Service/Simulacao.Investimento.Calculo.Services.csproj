@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cdb.Domain\Simulacao.Cdb.Calculo.Domain.csproj" />
+    <ProjectReference Include="..\Cdb.Domain\Simulacao.Investimento.Calculo.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Simulacao.Cdb.Calculo.Domain
+﻿namespace Simulacao.Investimento.Calculo.Domain.CBD
 {
-    public class CalculoResponse
+    public class CdbResponse
     {
         /// <summary>
         /// valor inicial do investimento
         /// </summary>
         public decimal InvestimentoInicial { get; set; }
 
-    
+
         /// <summary>
         /// taxa do imposto
         /// </summary>
@@ -23,7 +17,7 @@ namespace Simulacao.Cdb.Calculo.Domain
         /// <summary>
         /// Saldo liquido do investimento (desconto do imposto aplicado)
         /// </summary>
-        public decimal  InvestimentoLiquido { get; set; }
+        public decimal InvestimentoLiquido { get; set; }
 
 
         /// <summary>

@@ -23,9 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cdb.Domain\Simulacao.Cdb.Calculo.Domain.csproj" />
-    <ProjectReference Include="..\Cdb.Service\Simulacao.Cdb.Calculo.Services.csproj" />
-    <ProjectReference Include="..\WebApi\Simulacao.Cdb.WebApi.csproj" />
+    <ProjectReference Include="..\Cdb.Domain\Simulacao.Investimento.Calculo.Domain.csproj" />
+    <ProjectReference Include="..\Cdb.Service\Simulacao.Investimento.Calculo.Services.csproj" />
+    <ProjectReference Include="..\WebApi\Simulacao.Investimento.Api.csproj" />
   </ItemGroup>
 
   <ItemGroup>

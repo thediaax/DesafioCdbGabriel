@@ -1,15 +1,15 @@
-﻿using Simulacao.Cdb.Calculo.Domain;
+﻿using Simulacao.Investimento.Calculo.Domain.CBD;
 
-namespace Simulacao.Cdb.Calculo.Services
+namespace Simulacao.Investimento.Calculo.Services.CBD
 {
     public class CalculoCdb : ICalculoCdb
     {
 
-        const string erroValorInicial = "O valor precisa ser positivo.";
-        const string erroPrazo = "o prazo precisa ser superior a 1 mês";
-        const decimal taxaBase = 1.08m;
-        const decimal cdi = 0.009m;
-        private static decimal CalculaInvestimentoTotal(CalculoRequest req, CalculoResponse res)
+        private const string erroValorInicial = "O valor de investimento precisa ser positivo.";
+        private const string erroPrazo = "o prazo de investimento minimo é um mês";
+        private static decimal TaxaBase { get; } = 1.08m;
+        private static decimal Cdi { get; } = 0.009m;
+        private static decimal CalculaInvestimentoTotal(CdbRequest req, CdbResponse res)
         {
             res.InvestimentoInicial = req.InitialValue;
             decimal rendimento = req.InitialValue;
@@ -28,14 +28,14 @@ namespace Simulacao.Cdb.Calculo.Services
             {
                 for (int i = 0; i < req.RescueTime; i++)
                 {
-                    rendimento *= 1 + cdi * taxaBase;
+                    rendimento *= 1 + Cdi * TaxaBase;
                 }
             }
             res.InvestimentoBruto = rendimento;
             return res.InvestimentoBruto;
         }
 
-        private static void CalcularImposto(CalculoResponse res, CalculoRequest req)
+        private static void CalcularImposto(CdbResponse res, CdbRequest req)
         {
             decimal lucro = res.InvestimentoBruto - res.InvestimentoInicial;
             decimal porcentagem = PorcentagemIR(req.RescueTime);
@@ -46,21 +46,21 @@ namespace Simulacao.Cdb.Calculo.Services
         {
             return prazoResgate switch
             {
-                int n when n < 7 => 0.225m,
-                int n when n < 13 => 0.2m,
-                int n when n < 25 => 0.175m,
+                < 7 => 0.225m,
+                >= 7 and < 13 => 0.2m,
+                >= 13 and < 25 => 0.175m,
                 _ => 0.15m,
             };
         }
 
-        private static void CalculoValorLiquido(CalculoResponse res)
+        private static void CalculoValorLiquido(CdbResponse res)
         {
             res.InvestimentoLiquido = res.InvestimentoBruto - res.Imposto;
         }
 
-        public CalculoResponse RetornodeSaldosCompleto(CalculoRequest req)
+        public CdbResponse RetornoSaldoCompleto(CdbRequest req)
         {
-            CalculoResponse res = new();
+            CdbResponse res = new();
             res.InvestimentoBruto = CalculaInvestimentoTotal(req, res);
             CalcularImposto(res, req);
             CalculoValorLiquido(res);
