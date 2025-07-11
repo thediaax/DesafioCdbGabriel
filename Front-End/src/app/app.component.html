@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="app.component.css">
 
 <header class="top">
-  <img src="assets/logo-b3-header.png"/>
+  <img src="assets/logo-b3-header.png" alt="Logo B3" />
   <h2>SIMULADOR DE RENDA - CDB</h2>
 </header>
 
@@ -28,15 +28,32 @@
     <h3>Exemplo</h3>
     <p>Se você investir R$ 1.000,00 por 12 meses, o simulador calcula os valores finais, incluindo impostos.</p>
   </aside>
+  <div class="meio">
 
   <form (ngSubmit)="enviarDados()">
     <label for="valorInicial">Valor Inicial:</label><br>
-    <input type="number" [(ngModel)]="valorInicial" name="valorInicial" required min="1" /><br>
+    <input 
+      type="number" 
+      [(ngModel)]="valorInicial" 
+      name="valorInicial" 
+      required 
+      min="1" 
+      aria-label="Valor Inicial" /><br>
 
-    <label for="Meses">Meses:</label><br>
-    <input type="number" [(ngModel)]="meses" name="meses" placeholder="insira em meses a quantidade de tempo a simular"
-      required min="1" /><br>
-    <button type="submit" class="button">Enviar</button>
+    <label for="meses">Meses:</label><br>
+    <input 
+      type="number" 
+      [(ngModel)]="meses" 
+      name="meses" 
+      placeholder="Insira em meses a quantidade de tempo a simular"
+      required 
+      min="1" 
+      aria-label="Meses" /><br>
+
+    <button type="submit" class="button" [disabled]="loading">Enviar</button>
+    
+    <div *ngIf="loading">Carregando...</div>
+    <div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
   </form>
 
   <div *ngIf="resultado" class="resultado">
@@ -50,6 +67,9 @@
   <div *ngIf="!resultado" class="adviser">
     <p>Por favor, insira os dados e clique em "Enviar".</p>
   </div>
+  </div>
+
+
 </main>
 
 <footer>

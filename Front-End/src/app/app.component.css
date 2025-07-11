@@ -8,27 +8,26 @@
 
 ::ng-deep body {
   height: 100%; /* Garante que o body ocupe toda a altura da tela */
-  margin: 0px!important;/* Remove a margem padrão do body */
+  margin: 0px!important; /* Remove a margem padrão do body */
   padding: 0; /* Remove o padding padrão do body */
-}
-
-header {
-  background-color: #003979;
-  color: white;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 20px; /* Padding uniforme */
 }
 
 main {
   flex: 1; /* Faz o main ocupar todo o espaço restante */
   padding: 20px; /* Adiciona um padding ao main */
   display: flex;
-  flex-direction: row; /* Alinha os filhos em linha (lado a lado) */
-  justify-content: space-between; /* Distribui espaço entre os filhos */
-  align-items: flex-start; /* Alinha os filhos no início do contêiner */
-  height: 100%;
+  justify-content: center; /* Centraliza o conteúdo */
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  margin-top: 35px;
+}
+
+.meio {
+  display: flex;
+  flex-direction: column; /* Mantém o conteúdo do formulário em coluna */
+  align-items: center; /* Centraliza o conteúdo do formulário */
+  height: 80%;
 }
 
 form {
@@ -69,7 +68,7 @@ button:hover {
   background-color: rgb(35, 71, 184); /* Cor ao passar o mouse */
 }
 
- .resultado {
+.resultado {
   margin-top: 20px; /* Espaçamento acima do resultado */
   padding: 10px; /* Padding interno */
   background-color: #003979;
@@ -79,14 +78,26 @@ button:hover {
 
 footer {
   background: #003979;
+  border: 1px solid #2660f0;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
   width: 100%;
-  height: 40px;
+  padding: 10px;
   bottom: 0;
+}
+ header {
+  background: #003979;
+  border: 0px solid;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  padding: 10px;
 }
 
 .adviser {
@@ -98,9 +109,12 @@ footer {
 
 .information {
   background-color: #2660f0;
-  margin-right: 20px; /* Espaçamento à direita do bloco de informação */
+  margin-right: 170px; /* Espaçamento à direita do bloco de informação */
   width: 280px; /* Largura fixa ou ajustável conforme necessário */
-  padding: 15px; /* Padding interno */
+  padding: 25px; /* Padding interno */
   border-radius: 8px; /* Cantos arredondados */
   color: white; /* Cor do texto */
+  height: 415px;
+  font-size: small;
+  text-align:justify;
 }
